@@ -1,9 +1,16 @@
-Package: shinyless
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.5.1)
-License: What license is it under?
+Package: rless
+Title: converter from LESS to CSS
+Version: 0.0.1
+Authors@R: person("Jonas", "Vaclavek", email = "jonas.vaclave@gmail.com", role = c("aut", "cre"))
+Description: The rless package allows users to convert LESS to CSS. 
+    It uses V8 engine, where LESS parser is run. Functions for
+    LESS text, file or folder conversion are provided.
+Depends: R (>= 3.4.3)
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Imports:
+    V8
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat
