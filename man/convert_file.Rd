@@ -23,8 +23,8 @@ valid css. The css is returned
 }
 \examples{
 \dontrun{
-convert_file("path/to/less", "file.less")
-convert_file("path/to/less", "file.less", "path/to/css")
+convert_file('path/to/less', 'file.less')
+convert_file('path/to/less', 'file.less', 'path/to/css')
 }
 
 }

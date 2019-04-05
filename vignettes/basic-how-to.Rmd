@@ -1,0 +1,213 @@
+dev---
+title: "Basic how to package"
+author: "Jonas Vaclavek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+While developing web applications, CSS is used to style web application's web pages. The CSS is often written using CSS preprocessor such as SASS or LESS. 
+
+`rless` is a package, which helps to convert LESS files to CSS files within R environment. 
+
+This documentation is divided into three sections:
+
+- [rless functions](#rless) section, which shows usage of the package functions
+- [LESS](#less) section briefly explaining basics of LESS 
+- [Using in Shiny apps](#shiny) section demonstrating `rless`intergration to Shiny application 
+
+# rless functions {#rless}
+
+## parse_less
+The `parse_less` function is a core function of the package. It takes LESS content and converts it to CSS. 
+
+```{r}
+library(rless)
+
+less <- "
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+}
+"
+
+css <- parse_less(less)
+cat(css)
+```
+
+## convert_file
+Passing text into `parse_less` function is suitable for small chunks. However, for more complex codes, it is more convenient to write LESS file separately and convert the file using `convert_file` function. It requires two parameters:
+
+* file name
+* path to the file (both relative and absolute are supported)
+
+The converted file will be stored in `tempdir` folder or use `output_folder` argument to set different output location. 
+
+The function returns full path to the converted.
+
+```r
+less_file <- file.path("path", "to", "styles.less")
+convert_file(dirname(less_file), basename(less_file), getwd())
+
+```
+
+## convert_folder
+When having multiple LESS files, one can use `rless` function `convert_folder`. The function requires only input folder to be specified. It goes through the folder and converts all files matching a `pattern`  (*.less by default) into CSS files. `tempdir` folder is used again as a default output location. 
+
+The function allows to specify optional argument:
+
+* output_folder - folder, where converted files will be places
+* recursive - whether to scan for files in nested folders
+* pattern - file name pattern used to select files to convert
+
+```r
+styles_folder <- file.path("path", "to", "styles", "folder")
+
+paths_to_files <- convert_folder(styles_folder)
+
+# set different output folder
+paths_to_files <- convert_folder(styles_folder, output_folder = getwd())
+
+# convert also files in file.path(styles_folder, "nested_folder", "even_more_nested_folder")
+paths_to_files <- convert_folder(styles_folder, recursive = TRUE)
+
+# convert only files with filename ending with 'styles.less'
+paths_to_files <- convert_folder(styles_folder, pattern = "^*.styles.less$")
+```
+
+
+List of paths to converted files is returned.
+
+## LESS {#less}
+The following sections introduce the basic concepts of LESS with a use of `rless` function `parse_less`. More information about LESS features can be found [here][less-features].
+
+### Variables
+Use variables at multiple places in your LESS/CSS.
+
+``` {r}
+library(rless)
+
+less <- "
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+}
+
+#footer{
+  width: @width;
+  height: @height;
+}
+"
+
+css <- parse_less(less)
+cat(css)
+
+```
+
+### Nesting and parent selector
+Basic nesting of CSS selectors
+```{r}
+less <- "
+ul {
+  li {
+    color: cyan;
+  }  
+}
+"
+
+css <- parse_less(less)
+cat(css)
+
+```
+Nesting with reference to parent.
+``` {r}
+less <- "
+.button {
+  &-ok {
+    background-color: green;
+  }
+  && {
+    backgrou-color: transparent;
+  }
+}
+"
+
+css <- parse_less(less)
+cat(css)
+```
+
+### Mixins
+Combine chunks of CSS using mixins.
+
+``` {r}
+less <- "
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+#menu a {
+  color: #111;
+  .bordered();
+}
+
+.post a {
+  color: red;
+  .bordered();
+}
+"
+
+css <- parse_less(less)
+cat(css)
+
+```
+
+
+## Using in Shiny apps {#shiny}
+One of the typical ways of creating web applications in R is using [Shiny][shiny]. This sections shows how easy is to combine it with our `rless` package.
+
+
+### Single LESS file
+```r
+# global.R
+convert_file(getwd(), "styles.less", "www")
+
+# ui.R
+shinyUI(
+  fluidPage(
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
+    )
+  )
+)
+
+```
+
+### Multiple LESS files
+```r
+# ui.R
+shinyUI(
+  fluidPage(
+    lapply(convert_folder(input_folder, output_folder), includeCSS)
+  )
+)
+  
+```
+[shiny]: https://shiny.rstudio.com/
+[less-features]: http://lesscss.org/features/
