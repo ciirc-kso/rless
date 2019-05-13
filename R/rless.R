@@ -1,3 +1,15 @@
+# TODO:
+# * description of the package as a whole.. if i type ?rless nothing found
+# * parse_less description and details
+# * convert_file better description of return value
+# * convert_folder missing examples, better return and description
+# * utils.R - include description of functions similar to exported ones, reformat the code
+# * include HEADER to all files, provide section separator
+# * missing HEADERs and comments in testthat files
+# * better description in DESCRIPTION, JK as author?
+# * include description to travis.yml
+# * build vignette before build to include it into the package
+
 #' Parse LESS content to CSS
 #'
 #' paragraph
@@ -42,14 +54,14 @@ convert_file <- function(base_path, file_name, output_folder = tempdir()) {
     if (!file.exists(full_path)) {
         stop("Invalid file name")
     }
-    
+
     if (!dir.exists(output_folder)) {
         stop("Output folder does not exist")
     }
-    
+
     file_content <- readChar(full_path, file.info(full_path)$size)
-    
-    write_to_file(parse_less(file_content), gsub("\\..*$", ".css", file_name), 
+
+    write_to_file(parse_less(file_content), gsub("\\..*$", ".css", file_name),
         output_folder)
 }
 
@@ -73,21 +85,21 @@ convert_file <- function(base_path, file_name, output_folder = tempdir()) {
 #' convert_folder('path/to/less, pattern = '*.css$')
 #'}
 #' @export
-convert_folder <- function(input_folder, output_folder = tempdir(), recursive = FALSE, 
+convert_folder <- function(input_folder, output_folder = tempdir(), recursive = FALSE,
     pattern = "*.less$") {
-    
+
     if (!dir.exists(input_folder)) {
         stop("Input folder does not exist")
     }
-    
+
     if (!dir.exists(output_folder)) {
         stop("Output folder does not exist")
     }
-    
+
     # Load source LESS files
-    sources <- list.files(input_folder, pattern = pattern, full.names = FALSE, 
+    sources <- list.files(input_folder, pattern = pattern, full.names = FALSE,
         ignore.case = TRUE, recursive = recursive)
-    
+
     # Convert less to css
     sapply(sources, function(name) {
         convert_file(input_folder, name, output_folder)
