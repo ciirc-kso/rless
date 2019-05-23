@@ -16,7 +16,7 @@ converted text to CSS
 Parse LESS file to CSS and return it as result
 }
 \details{
-Currently `@import` functionality is not supported.
+Currently LESS \emph{`@import`} functionality is not supported.
 }
 \examples{
 parse_less('.button { .red{ collor: red}}')
