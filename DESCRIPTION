@@ -1,7 +1,11 @@
 Package: rless
 Title: converter from LESS to CSS
 Version: 0.0.1
-Authors@R: person("Jonas", "Vaclavek", email = "jonas.vaclave@gmail.com", role = c("aut", "cre"))
+Authors@R: 
+  c(
+    person("Jonas", "Vaclavek", , "jonas.vaclavek@gmail.com", role = c("aut", "cre")),
+    person("Jakub", "Kuzilek", role = c("aut"))
+  )
 Description: The rless package allows users to convert LESS to CSS. 
     It uses V8 engine, where LESS parser is run. Functions for
     LESS text, file or folder conversion are provided.
