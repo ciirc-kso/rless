@@ -12,7 +12,7 @@
 #' @param base_path Base path to file to be converted
 #' @param file_name Path relative to \code{base_path} leading to file to be converted
 #' @param output_folder Output path where converted file should be placed.
-#' Files is placed to \code{tempdir} by default
+#' File is placed to \code{tempdir} by default
 
 #' @return Full path to created file with converted CSS file
 #'

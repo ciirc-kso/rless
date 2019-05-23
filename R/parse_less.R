@@ -7,7 +7,7 @@
 #'
 #' Parse LESS file to CSS and return it as result
 #'
-#' Currently `@import` functionality is not supported.
+#' Currently LESS \emph{`@import`} functionality is not supported.
 #'
 #' @param code text to be converted in LESS format
 #' @examples
