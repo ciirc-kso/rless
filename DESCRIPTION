@@ -1,5 +1,5 @@
 Package: rless
-Title: converter from LESS to CSS
+Title:  Leaner Style Sheets for R
 Version: 0.0.1
 Authors@R: 
   c(

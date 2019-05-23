@@ -31,13 +31,15 @@ get_v8_console <-
 write_to_file <-
   function(content, file_path, output_folder) {
     base_name <- basename(file_path)
+    output_file_name <- file.path(output_folder, file_path)
+
     dir.create(
       file.path(output_folder,
                 gsub(base_name, "", file_path, fixed = TRUE)
       ),
       showWarnings = FALSE
     )
-    output_file_name <- file.path(output_folder, file_path)
+
     write(content, output_file_name)
 
     output_file_name

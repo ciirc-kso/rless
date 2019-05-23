@@ -26,7 +26,6 @@ before_test_init <-
   function() {
     unlink(x = test_out_path, recursive = TRUE)
     dir.create(path = test_out_path)
-
   }
 
 #
@@ -35,6 +34,7 @@ test_that("parse_less - simple less returns correct css", {
 
   expect_equal(object = parse_less(code = ".button { .red{ collor: red}}"),
                expected = ".button .red {\n  collor: red;\n}\n")
+
   expect_equal(object = parse_less(code = "@red: red; .red{ collor: @red}"),
                expected = ".red {\n  collor: red;\n}\n")
 
@@ -45,6 +45,7 @@ test_that("convert_file - new file is created after function execution", {
   before_test_init()
 
   expect_false(object = file.exists(file.path(test_out_path, "test.css")))
+
   expect_silent(
     object = convert_file(
       base_path = test_data_path,
@@ -52,6 +53,7 @@ test_that("convert_file - new file is created after function execution", {
       output_folder =  test_out_path
     )
   )
+
   expect_true(object = file.exists(file.path(test_out_path, "test.css")))
 
   after_test_cleanup()
@@ -66,6 +68,7 @@ test_that("convert_file - error is thrown when invalid file path is provided",
                                     file_name = "non_existing_file_name"),
               regexp = "Invalid file name"
             )
+
             expect_error(
               object = convert_file(test_data_path,
                                     "test.less",
@@ -81,16 +84,25 @@ test_that("convert_folder -
           {
             before_test_init()
 
-            expect_false(object = file.exists(file.path(test_out_path, "test.css")))
+            expect_false(object = file.exists(file.path(test_out_path,
+                                                        "test.css")
+                                              )
+                         )
+
             convert_folder(
               input_folder = test_data_path,
               output_folder = test_out_path,
               recursive = FALSE
             )
-            expect_true(object = file.exists(file.path(test_out_path, "test.css")))
+            expect_true(object = file.exists(file.path(test_out_path,
+                                                       "test.css")
+                                             )
+                        )
+
             # R dir returns also names of folders in non recursive mode
             input_folder_paths <- dir(path = test_data_path)
             output_folder_paths <- dir(path = test_out_path)
+
             # therefore folders are excluded
             input_only_files <-
               rownames(x = input_folder_paths)[file_test(op = "-f",
@@ -115,6 +127,7 @@ test_that("convert_folder - error is thrown when invalid input or output folders
                                       output_folder = test_out_path),
               regexp = "Input folder does not exist"
             )
+
             expect_error(
               object = convert_folder(input_folder = test_data_path,
                                       output_folder = "non_existing_output_folder"),
@@ -129,15 +142,26 @@ test_that("convert_folder - pattern matching - function filters out only valid
           {
             before_test_init()
 
-            expect_false(object = file.exists(file.path(test_out_path, "test.css")))
+            expect_false(object = file.exists(file.path(test_out_path,
+                                                        "test.css")
+                                              )
+                         )
+
             convert_folder(input_folder = test_data_path,
                            output_folder =  test_out_path,
                            pattern = ".css")
-            expect_false(object = file.exists(file.path(test_out_path, "test.css")))
+            expect_false(object = file.exists(file.path(test_out_path,
+                                                        "test.css")
+                                              )
+                         )
+
             convert_folder(input_folder = test_data_path,
                            output_folder =  test_out_path,
                            pattern = ".less")
-            expect_true(object = file.exists(file.path(test_out_path, "test.css")))
+            expect_true(object = file.exists(file.path(test_out_path,
+                                                       "test.css")
+                                             )
+                        )
 
             after_test_cleanup()
           })
@@ -149,12 +173,19 @@ test_that(
     before_test_init()
 
     expect_false(object = file.exists(file.path(test_out_path, "test.css")))
+
     convert_folder(input_folder = test_data_path,
                    output_folder = test_out_path,
                    recursive = TRUE)
     expect_true(object = file.exists(file.path(test_out_path, "test.css")))
+
     expect_true(
-      object = file.exists(file.path(test_out_path, "recursion_test", "test.css")))
+      object = file.exists(file.path(test_out_path,
+                                     "recursion_test",
+                                     "test.css")
+                           )
+      )
+
     expect_equal(
       object = length(x = list.files(path = test_data_path, recursive = TRUE)),
       expected = length(x = list.files(path = test_out_path, recursive = TRUE)))

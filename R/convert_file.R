@@ -27,6 +27,7 @@ convert_file <-
   function(base_path, file_name, output_folder = tempdir()) {
 
     full_path <- file.path(base_path, file_name)
+
     if (!file.exists(full_path)) {
       stop("Invalid file name")
     }
