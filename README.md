@@ -7,7 +7,7 @@
 status](https://www.r-pkg.org/badges/version/rless)](https://cran.r-project.org/package=rless)[![Travis
 build
 status](https://travis-ci.org/ciirc-kso/rless.svg?branch=master)](https://travis-ci.org/ciirc-kso/rless)
-[![](https://img.shields.io/badge/devel%20version-0.0.1-blue.svg)](https://github.com/ciirc-kso/rless)
+[![](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/ciirc-kso/rless)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/rless?color=blue)](https://cran.r-project.org/package=rless)
 
 `rless` is R package providing CSS preprocessor features to R users.
