@@ -6,7 +6,7 @@ Authors@R:
     person("Jonas", "Vaclavek", , "jonas.vaclavek@gmail.com", role = c("aut", "cre")),
     person("Jakub", "Kuzilek", role = c("aut"))
   )
-Description: 'rless' package converts LESS to CSS. 
+Description: This package converts LESS to CSS. 
     It uses V8 engine, where LESS parser is run. Functions for
     LESS text, file or folder conversion are provided.
 Depends: R (>= 3.4)
