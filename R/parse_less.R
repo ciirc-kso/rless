@@ -1,7 +1,9 @@
 # Created by: Jonas Vaclavek
 # Modified by: Jonas Vaclavek
-# Modify date: 23.5.2019
+# Modify date: 05.06.2019
 # Description: Parse less to css
+
+if(getRversion() >= "2.15.1")  utils::globalVariables("output")
 
 #' Parse LESS content to CSS
 #'
@@ -19,6 +21,5 @@
 parse_less <-
   function(code) {
     get_v8_console()$call("rlessParse", code, "output")
-
     output
   }
