@@ -2,7 +2,7 @@
 This is the first submission of the package.
 
 ## Test environments 
-* local Windowns 8.1 64bit, R 3.4.3
+* local Windows 8.1 64bit, R 3.4.3
 * local macOS Mojave 10.14.5, R 3.5.1
 * Ubuntu Trusty 14.04 (on travis-ci), R 3.6.0
 
