@@ -1,6 +1,6 @@
 Package: rless
 Title:  Leaner Style Sheets for R
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: 
   c(
     person("Jonas", "Vaclavek", , "jonas.vaclavek@gmail.com", role = c("aut", "cre")),

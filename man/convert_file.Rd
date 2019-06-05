@@ -12,7 +12,7 @@ convert_file(base_path, file_name, output_folder = tempdir())
 \item{file_name}{Path relative to \code{base_path} leading to file to be converted}
 
 \item{output_folder}{Output path where converted file should be placed.
-Files is placed to \code{tempdir} by default}
+File is placed to \code{tempdir} by default}
 }
 \value{
 Full path to created file with converted CSS file
