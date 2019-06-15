@@ -19,12 +19,12 @@
 #' @return List of file paths to converted files is returned
 #'
 #' @examples
-#' \dontrun{
-#' convert_folder('path/to/less')
-#' convert_folder('path/to/less', 'path/to/css')
-#' convert_folder('path/to/less', recursive = TRUE)
-#' convert_folder('path/to/less', pattern = '*.css$')
-#' }
+#' path_to_less_files <- system.file("extdata", package="rless")
+#'
+#' convert_folder(path_to_less_files)
+#' convert_folder(path_to_less_files, tempdir())
+#' convert_folder(path_to_less_files, recursive = TRUE)
+#' convert_folder(path_to_less_files, pattern = '*.css$')
 #'
 #' @export
 convert_folder <-

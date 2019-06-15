@@ -27,11 +27,11 @@ are also subdirectories of the \emph{input_folder}. Matching files are
 converted using \code{\link{convert_file}} function.
 }
 \examples{
-\dontrun{
-convert_folder('path/to/less')
-convert_folder('path/to/less', 'path/to/css')
-convert_folder('path/to/less', recursive = TRUE)
-convert_folder('path/to/less', pattern = '*.css$')
-}
+path_to_less_files <- system.file("extdata", package="rless")
+
+convert_folder(path_to_less_files)
+convert_folder(path_to_less_files, tempdir())
+convert_folder(path_to_less_files, recursive = TRUE)
+convert_folder(path_to_less_files, pattern = '*.css$')
 
 }

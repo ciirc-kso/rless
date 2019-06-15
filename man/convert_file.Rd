@@ -23,9 +23,8 @@ engine to CSS. The converted CSS is saved into \emph{output_folder} under
 original name. Only the extension is switched to \emph{css}.
 }
 \examples{
-\dontrun{
-convert_file('path/to/less', 'file.less')
-convert_file('path/to/less', 'file.less', 'path/to/css')
-}
+path_to_less_files <- system.file("extdata", package="rless")
+convert_file(path_to_less_files, "example.less")
+convert_file(path_to_less_files, "example.less", tempdir())
 
 }

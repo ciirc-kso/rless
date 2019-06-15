@@ -17,10 +17,10 @@
 #' @return Full path to created file with converted CSS file
 #'
 #' @examples
-#' \dontrun{
-#' convert_file('path/to/less', 'file.less')
-#' convert_file('path/to/less', 'file.less', 'path/to/css')
-#' }
+#' path_to_less_files <- system.file("extdata", package="rless")
+#'
+#' convert_file(path_to_less_files, "example.less")
+#' convert_file(path_to_less_files, "example.less", tempdir())
 #'
 #' @export
 convert_file <-
