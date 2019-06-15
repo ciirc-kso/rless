@@ -1,6 +1,6 @@
 # Created by: Jonas Vaclavek
 # Modified by: Jonas Vaclavek
-# Modify date: 23.5.2019
+# Modify date: 15.6.2019
 # Description: function for converting a folder with less files to css files
 
 #' Converts files in folder to CSS files

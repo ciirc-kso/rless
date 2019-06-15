@@ -1,12 +1,12 @@
 # Created by: Jonas Vaclavek
 # Modified by: Jonas Vaclavek
-# Modify date: 23.5.2019
+# Modify date: 15.6.2019
 # Description: tests of rless functions
 
 context("test-rless")
 
 # path to temp test output folder
-test_out_path <- file.path("..", "test_out")
+test_out_path <- file.path(tempdir(), "test_out")
 # path to test files
 test_data_path <- file.path("..", "test_data")
 
