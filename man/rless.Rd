@@ -15,6 +15,14 @@ LESS website (\url{http://lesscss.org}) for more information about language
 specifics. The provided LESS content is converted into CSS using V8 JavaScript engine
 (\url{https://v8.dev/}).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ciirc-kso/rless}
+  \item Report bugs at \url{https://github.com/ciirc-kso/rless/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jonas Vaclavek \email{jonas.vaclavek@gmail.com}
 

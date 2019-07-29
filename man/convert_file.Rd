@@ -24,6 +24,7 @@ original name. Only the extension is switched to \emph{css}.
 }
 \examples{
 path_to_less_files <- system.file("extdata", package="rless")
+
 convert_file(path_to_less_files, "example.less")
 convert_file(path_to_less_files, "example.less", tempdir())
 
