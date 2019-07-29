@@ -11,6 +11,8 @@ Description: Converts LESS to CSS.
     LESS text, file or folder conversion are provided.
 Depends: R (>= 3.4)
 License: MIT + file LICENSE
+URL: https://github.com/ciirc-kso/rless
+BugReports: https://github.com/ciirc-kso/rless/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
