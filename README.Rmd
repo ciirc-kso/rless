@@ -87,6 +87,9 @@ cat(css)
 
 We strongly recommend to visit official [guide][less-features] to grasp the full power of the LESS preprocessor tool. 
 
+## Acknowledgment
+This work was supported by a junior grant research project by Czech Science Foundation GACR no. GJ18-04150Y.
+
 [less-link]: http://lesscss.org/
 [less-features]: http://lesscss.org/features/
 [V8-link]: https://github.com/jeroen/V8
