@@ -1,4 +1,4 @@
-dev---
+---
 title: "Basic how to package"
 author: "Jonas Vaclavek"
 date: "`r Sys.Date()`"
