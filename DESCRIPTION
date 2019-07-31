@@ -10,7 +10,7 @@ Description: Converts LESS to CSS.
     It uses V8 engine, where LESS parser is run. Functions for
     LESS text, file or folder conversion are provided.
     This work was supported by a junior grant research project by 
-    Czech Science Foundation GACR no. GJ18-04150Y.
+    Czech Science Foundation 'GACR' no. 'GJ18-04150Y'.
 Depends: R (>= 3.4)
 License: MIT + file LICENSE
 URL: https://github.com/ciirc-kso/rless

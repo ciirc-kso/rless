@@ -1,5 +1,6 @@
 # General
-This is the first submission of the package.
+This is the second submission. Only a few minor changes introduced (fixed typos, 
+extended DESCRIPTION and README). No backward compatibility needs to be checked.
 
 ## Test environments 
 * local Windows 8.1 64bit, R 3.4.3
